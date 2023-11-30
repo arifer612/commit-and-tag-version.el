@@ -38,7 +38,7 @@
 (require 'transient)
 
 (defgroup conventional-changelog nil
-  "Generate CHANGELOG file in project using standard-version."
+  "Generate CHANGELOG file in project using commit-and-tag-version."
   :group 'tools
   :tag "Conventional Changelog")
 
@@ -65,7 +65,7 @@ default filemode."
   :type 'list)
 
 (defvar conventional-changelog--versionrc nil
-  "Config file for standard-version if exists.")
+  "Config file for commit-and-tag-version if exists.")
 
 (defun conventional-changelog--versionrc ()
   "Return fullpath of CHANGELOG file in the current repository if exists."
@@ -145,8 +145,8 @@ default filemode."
 
 ;;;###autoload (autoload 'conventional-changelog-menu "conventional-changelog" nil t)
 (transient-define-prefix conventional-changelog-menu ()
-  "Invoke commands for `standard-version'."
-  :value '("--preset=angular" "--tag-prefix=v")
+  "Invoke commands for `commit-and-tag-version'."
+  :value '("--preset=conventionalcommits" "--tag-prefix=v")
   [:description conventional-changelog--menu-header
    :class transient-subgroups
    ["Preset"
@@ -181,12 +181,12 @@ default filemode."
   "Generate or update CHANGELOG file with ARGS."
   (interactive (list (transient-args 'conventional-changelog-menu)))
   (let* ((default-directory (conventional-changelog--get-rootdir))
-         (cmd (executable-find "standard-version"))
+         (cmd (executable-find "commit-and-tag-version"))
          (file (conventional-changelog--file))
          (dry-run (transient-arg-value "--dry-run" args))
          (org-ext (and (not dry-run) (string= "org" (file-name-extension file))))
          (shell-command-dont-erase-buffer 'beg-last-out))
-    (unless cmd (user-error "Cannot find standard-version in PATH"))
+    (unless cmd (user-error "Cannot find commit-and-tag-version in PATH"))
     (when org-ext (conventional-changelog-transform))
     (shell-command (format "git fetch --tags;%s %s" (shell-quote-argument cmd)
                            (string-join args " ")))
