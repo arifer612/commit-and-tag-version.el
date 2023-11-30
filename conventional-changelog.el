@@ -1,15 +1,17 @@
 ;;; conventional-changelog.el --- Conventional Changelog Generator -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021-2023 liuyinz
+;; Copyright (C) 2023- Arif Er
 
 ;; Author: liuyinz <liuyinz95@gmail.com>
 ;; Created: 2021-09-18 23:45:09
+;; Maintainer: Arif Er <arifer612@proton.me>
 ;; Version: 1.1.0
 ;; Keywords: tools
 ;; Package-Requires: ((emacs "26.3") (transient "0.4.1"))
-;; Homepage: https://github.com/liuyinz/emacs-conventional-changelog
+;; Homepage: https://github.com/arifer612/conventional-changelog
 
-;; This file is not a part of GNU Emacsl.
+;; This file is not a part of GNU Emacs.
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -27,7 +29,7 @@
 ;;; Commentary:
 
 ;; Generate and update CHANGELOG file in Emacs.
-;; This package provides the `transient' menu for`standard-version'.
+;; This package provides the `transient' menu for `commit-and-tag-version'.
 ;; Call `conventional-changelog-menu' to start.
 
 ;;; Code:
