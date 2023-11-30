@@ -67,14 +67,32 @@ default filemode."
 (defvar conventional-changelog--versionrc nil
   "Config file for commit-and-tag-version if exists.")
 
+(defvar conventional-changelog--rootdir ""
+  "Root directory of the current repository.")
+
 (defun conventional-changelog--versionrc ()
-  "Return fullpath of CHANGELOG file in the current repository if exists."
+  "Return fullpath of CHANGELOG file in the current repository if exists within
+the current repository's root directory or the default user system-wide home directory."
+  (unless (string= conventional-changelog--rootdir
+                   (conventional-changelog--rootdir))
+    (setq conventional-changelog--versionrc nil))
   (or conventional-changelog--versionrc
+      (setq conventional-changelog--versionrc
+            (car (directory-files
+                  conventional-changelog--rootdir
+                  'full
+                  "\\`\\.versionrc\\(\\.js\\|\\.json\\)?\\'")))
       (setq conventional-changelog--versionrc
             (car (directory-files
                   (getenv "HOME")
                   'full
                   "\\`\\.versionrc\\(\\.js\\|\\.json\\)?\\'")))))
+
+(defun conventional-changelog--rootdir ()
+  "Return the absolute path to the toplevel of the current repository."
+  (setq conventional-changelog--rootdir
+        (string-trim
+         (shell-command-to-string "git rev-parse --show-toplevel"))))
 
 (defun conventional-changelog--tmp-file ()
   "Full path of temporary CHANGELOG.md file to generate org."
@@ -101,10 +119,10 @@ default filemode."
 (defun conventional-changelog--file ()
   "Return fullpath of CHANGELOG file in the current repository if exists."
   (or (car (directory-files
-            (conventional-changelog--get-rootdir)
+            (conventional-changelog--rootdir)
             'full
             "\\`CHANGELOG\\.\\(org\\|md\\)\\'"))
-      (concat (conventional-changelog--get-rootdir)
+      (concat (conventional-changelog--rootdir)
               "/"
               (pcase conventional-changelog-default-mode
                 ('markdown "CHANGELOG.md")
@@ -120,10 +138,6 @@ default filemode."
         "No tag"
       (string-trim (shell-command-to-string
                     (format "git describe --tags %s" rev))))))
-
-(defun conventional-changelog--get-rootdir ()
-  "Return the absolute path to the toplevel of the current repository."
-  (string-trim (shell-command-to-string "git rev-parse --show-toplevel")))
 
 (defun conventional-changelog--menu-header ()
   "Header used in `conventional-changelog-menu'."
@@ -180,7 +194,7 @@ default filemode."
 (defun conventional-changelog-generate (args)
   "Generate or update CHANGELOG file with ARGS."
   (interactive (list (transient-args 'conventional-changelog-menu)))
-  (let* ((default-directory (conventional-changelog--get-rootdir))
+  (let* ((default-directory (conventional-changelog--rootdir))
          (cmd (executable-find "commit-and-tag-version"))
          (file (conventional-changelog--file))
          (dry-run (transient-arg-value "--dry-run" args))
