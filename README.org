@@ -1,0 +1,94 @@
+#+TITLE: commit-and-tag-version.el
+
+[[LICENSE][https://img.shields.io/badge/license-GPL_3-green.svg]]
+
+Generate and update the CHANGELOG in the [[https://github.com/conventional-changelog/conventional-changelog][conventional-changelog]] style on Emacs.
+This package provides the interface ~conventional-changelog-menu~, which is
+built with [[https://github.com/magit/transient][transient]], between command-line tool [[https://github.com/absolute-version/commit-and-tag-version][commit-and-tag-version]] and
+Emacs. Call ~conventional-changelog-menu~ to start.
+
+This is based off the original work [[https://github.com/liuyinz/emacs-conventional-changelog][emacs-conventional-changelog]] by [[https://github.com/liuyinz][liuyinz]]. The
+author has since deprecated the project and has since developed a new package,
+[[https://github.com/liuyinz/git-cliff.el][git-cliff.el]], that generates CHANGELOGs using [[https://github.com/orhun/git-cliff][git-cliff]]. To discern this project
+from the original, the name is changed to =commit-and-tag-version.el=.
+
+
+* Screenshot
+
+- Implemented with [[https://github.com/magit/transient][transient]]:
+
+[[./image/conventional-changelog-menu.png]]
+
+- (OPTIONAL) Integrate with [[https://github.com/magit/magit][magit]]:
+
+[[./image/integrate-magit.png]]
+
+* Install
+
+** Dependencies
+
+- [[https://github.com/absolute-version/commit-and-tag-version][commit-and-tag-version]]
+
+  #+BEGIN_SRC shell
+   npm install -g commit-and-tag-version
+ #+END_SRC
+
+- (OPTIONAL) [[https://github.com/jgm/pandoc/blob/master/INSTALL.md][pandoc]], =org-mode= required
+
+** Package
+
+-   Manually
+
+Clone and add to ~load-path~, require the package.
+
+* Usage
+
+#+BEGIN_SRC emacs-lisp
+  ;; Directly (require 'conventional-changelog)
+  (with-eval-after-load 'magit-tag   ;; Integrate to `magit-tag'
+    (transient-append-suffix
+      'magit-tag
+      '(1 0 -1)
+      '("c" "changelog"
+        conventional-changelog-menu)))
+
+  ;; Or with \`use-package', etc
+  (use-package conventional-changelog
+    :init
+    (with-eval-after-load 'magit-tag
+      (transient-append-suffix
+        'magit-tag
+        '(1 0 -1)
+        '("c" "changelog" conventional-changelog-menu))))
+#+END_SRC
+
+Call ~conventional-changelog-menu~
+
+* Features
+
+- Totally compatible with [[https://github.com/absolute-version/commit-and-tag-version#configuration][commit-and-tag-version's configuration]] by default.
+- Supports both =CHANGELOG.md= and =CHANGELOG.org=. The CHANGELOG file is
+  automatically identified if it exists in the repository.
+- Options for ~release-as~ and ~-prerelease~ are highly customizable.
+- Integration with [[https://github.com/magit/magit][magit]].
+
+* Comparisons
+
+These are the comparisons against other packages that also generate CHANGELOG
+files that follow the [[https://semver.org][semantic versioning]] standard.
+
+[[https://github.com/johnlepikhin/el-conventional-changelog][el-conventional-changelog]]
+- Not compatible with ~commit-and-tag-version~.
+- Supports Org only.
+
+[[https://github.com/plandes/markdown-changelog][markdown-changelog]]
+- Does not follow the conventional style.
+- Supports Markdown only.
+
+[[https://github.com/liuyinz/emacs-conventional-changelog][emacs-conventional-changelog]]
+- Deprecated.
+- Not compatible with ~commit-and-tag-version~.
+
+* License
+
+Refer to [[LICENSE][LICENSE]].

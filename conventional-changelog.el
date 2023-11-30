@@ -1,7 +1,7 @@
 ;;; conventional-changelog.el --- Conventional Changelog Generator -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021-2023 liuyinz
-;; Copyright (C) 2023- Arif Er
+;; Copyright (C) 2023 Arif Er
 
 ;; Author: liuyinz <liuyinz95@gmail.com>
 ;; Created: 2021-09-18 23:45:09
@@ -9,7 +9,7 @@
 ;; Version: 1.1.0
 ;; Keywords: tools
 ;; Package-Requires: ((emacs "26.3") (transient "0.4.1"))
-;; Homepage: https://github.com/arifer612/conventional-changelog
+;; Homepage: https://github.com/arifer612/commit-and-tag-version.el
 
 ;; This file is not a part of GNU Emacs.
 
