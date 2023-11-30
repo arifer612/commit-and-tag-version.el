@@ -1,6 +1,29 @@
 * Changelog
+All notable changes to this project will be documented in this file. See
+[[https://github.com/absolute-version/commit-and-tag-version][commit-and-tag-version]]
+for commit guidelines.
+
+** [[https://github.com/arifer612/conventional-changelog.el/compare/v1.1.0...v2.0.0][2.0.0]]
+(2023-11-30)
+*** ⚠ BREAKING CHANGES
+- change the project name and update README
+- replace standard-version with commit-and-tag-version
+
+*** Features
+- change the project name and update README
+  ([[https://github.com/arifer612/conventional-changelog.el/commit/24d9cdc1544953d9e071e618ce2a99b861b350b3][24d9cdc]])
+- replace standard-version with commit-and-tag-version
+  ([[https://github.com/arifer612/conventional-changelog.el/commit/ba9a8ce5de670635ae10e1303831146da0aaddf7][ba9a8ce]])
+- search for versionrc in rootdir of repo first, before homedir
+  ([[https://github.com/arifer612/conventional-changelog.el/commit/5c135332459b5f27c3966e322adb64f553cb4e28][5c13533]])
+
+*** Bug Fixes
+- update avaliable presets
+  ([[https://github.com/arifer612/conventional-changelog.el/commit/40c2ee58364422b776e81dc153918205bfbeda86][40c2ee5]])
+
 * [[https://github.com/arifer612/convetional-changelog.el/compare/v1.1.0-alpha.2...v1.1.0][1.1.0]]
 (2021-11-03)
+
 *** Bug Fixes
 - autoload command conventional-changelog-menu
   ([[https://github.com/arifer612/convetional-changelog.el/commit/d2f0b6f4302acda4bd8405685ba307eacafc6bb9][d2f0b6f]])
@@ -27,6 +50,7 @@
 
 ** [[https://github.com/arifer612/convetional-changelog.el/compare/v1.1.0-alpha.1...v1.1.0-alpha.2][1.1.0-alpha.2]]
 (2021-10-02)
+
 *** Features
 - add command conventional-changelog-integrate-magit
   ([[https://github.com/arifer612/convetional-changelog.el/commit/18fb04b98f89c0ce9fc5877e205f9928b725b3fa][18fb04b]])
@@ -35,12 +59,14 @@
 
 ** [[https://github.com/arifer612/convetional-changelog.el/compare/v1.1.0-alpha.0...v1.1.0-alpha.1][1.1.0-alpha.1]]
 (2021-09-30)
+
 *** Bug Fixes
 - add dependency of transient and fix version
   ([[https://github.com/arifer612/convetional-changelog.el/commit/3b611dfca032b3ebef3b523dfd9ba098562301f4][3b611df]])
 
 ** [[https://github.com/arifer612/convetional-changelog.el/compare/v1.0.0...v1.1.0-alpha.0][1.1.0-alpha.0]]
 (2021-09-30)
+
 *** Features
 - add conventional-changelog-menu--header
   ([[https://github.com/arifer612/convetional-changelog.el/commit/f0dc0c82331634a5d9e4798791252fc131772747][f0dc0c8]])

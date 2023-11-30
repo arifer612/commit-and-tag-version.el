@@ -71,6 +71,7 @@ Call ~conventional-changelog-menu~
   automatically identified if it exists in the repository.
 - Options for ~release-as~ and ~-prerelease~ are highly customizable.
 - Integration with [[https://github.com/magit/magit][magit]].
+- Uses =.versionrc= files in the repository root if available.
 
 * Comparisons
 
@@ -88,6 +89,7 @@ files that follow the [[https://semver.org][semantic versioning]] standard.
 [[https://github.com/liuyinz/emacs-conventional-changelog][emacs-conventional-changelog]]
 - Deprecated.
 - Not compatible with ~commit-and-tag-version~.
+- Only supports =.versionrc= files in the home directory.
 
 * License
 

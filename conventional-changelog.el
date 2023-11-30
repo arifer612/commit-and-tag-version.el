@@ -6,7 +6,7 @@
 ;; Author: liuyinz <liuyinz95@gmail.com>
 ;; Created: 2021-09-18 23:45:09
 ;; Maintainer: Arif Er <arifer612@proton.me>
-;; Version: 1.1.0
+;; Version: 2.0.0
 ;; Keywords: tools
 ;; Package-Requires: ((emacs "26.3") (transient "0.4.1"))
 ;; Homepage: https://github.com/arifer612/commit-and-tag-version.el
