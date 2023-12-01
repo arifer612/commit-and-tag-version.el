@@ -37,9 +37,27 @@ from the original, the name is changed to =commit-and-tag-version.el=.
 
 ** Package
 
--   Manually
+*** Manually
+Clone the project, add to ~load-path~, and require the package.
+#+BEGIN_SRC shell
+  git clone https://github.com/arifer612/commit-and-tag-version.el
+#+END_SRC
 
-Clone and add to ~load-path~, require the package.
+#+BEGIN_SRC emacs-lisp
+  ;; .emacs
+  (add-to-list 'load-path /path/to/conventional-changelog.el)
+  (require 'conventional-changelog)
+#+END_SRC
+
+*** Melpa recipe
+Fetch the package through a Melpa recipe, and require the package.
+#+BEGIN_SRC emacs-lisp
+  ;; .emacs
+  (conventional-changelog
+   :fetcher github
+   :repo "arifer612/commit-and-tag-version.el")
+  (require 'conventional-changelog)
+#+END_SRC
 
 * Usage
 
