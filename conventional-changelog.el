@@ -1,4 +1,5 @@
-;;; conventional-changelog.el --- Conventional Changelog Generator -*- lexical-binding: t -*-
+;;; -*- lexical-binding: t -*-
+;;; conventional-changelog.el --- Conventional Changelog Generator
 
 ;; Copyright (C) 2021-2023 liuyinz
 ;; Copyright (C) 2023 Arif Er
